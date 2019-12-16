@@ -38,36 +38,14 @@ def upload():
     return render_template('upload.html')
 
 
-@app.route('/mupload')
-def uploads():
-    return render_template('mupload.html')
-
-
 '''
 reference
 https://www.tutorialspoint.com/flask/flask_file_uploading.htm
-'''
-@app.route('/uploader', methods=['GET', 'POST'])
-def uploader():
-    print('uploader')
-    if request.method == 'POST':
-        f = request.files['file']
-        print(f)
-
-        dcm = pydicom.dcmread(f)
-        print(dcm)
-        s = '<p>' + dcm.__str__().replace('\n', '</p><p>') + '</p>'
-        return(s)
-    return 'please POST file.'
-
-
-'''
-reference
 https://www.roytuts.com/python-flask-multiple-files-upload-example/
 secret key - https://stackoverflow.com/questions/26080872/secret-key-not-set-in-flask-session-using-the-flask-session-extension
 '''
-@app.route('/muploader', methods=['GET', 'POST'])
-def muploader():
+@app.route('/uploader', methods=['GET', 'POST'])
+def uploader():
     print('uploader')
     if request.method == 'POST':
         # check if the post request has the files part
